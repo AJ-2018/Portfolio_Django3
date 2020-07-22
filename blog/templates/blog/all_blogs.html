@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+</head>
+<body>
+    <!-- Extending base styles -->
+    {% extends 'portfolio/base_style.html' %}
+    {% block content %}
+    <h1 id="blog_title" class="text-center">Welcome to Blogs</h1>
+    <br>
+    <!-- It accesses a variable created in view file and pluralize ensures that correct form of plural is applied for the no. of blogs -->
+    <h3 class="text-center">AJ has written {{ blogs_count }} blog{{ blogs_count|pluralize}}!</h3> 
+    <!-- Django tempating language - for loop -->
+    {% for x in blogs %}
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <!-- Here blog:detailed_blog refers to the app name and the name of the url path and pk refers to the id of the blog -->
+            <a href="{% url 'blog:detailed_blog' x.pk %}"><h3>{{ x.blog_Title }}</h3></a>
+            <!-- truncatechars ensures that the description is limited to only 100 chars visibility and then ....-->
+            <p>{{ x.blog_Description|truncatechars:100 }}</p>
+            <p>{{ x.blog_Date|date:'M d, Y'|upper }}</p>
+        </div>
+    </div>
+    {% endfor %}
+    {% endblock %}
+    <!-- Ending content block -->
+</body>
+</html>

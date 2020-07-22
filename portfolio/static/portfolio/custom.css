@@ -1,0 +1,31 @@
+/* custom css for navigation bar in webpages */
+
+/* Styling for nav element */
+.navbar-nav .nav-link {
+    color: rgba(0,0,0,1) !important;
+}
+
+/* Styling for hovering nav element*/
+.navbar-nav .nav-link:hover {
+    color: rgba(255,255,255,1) !important;
+}
+
+
+@media (min-width: 992px) {
+    /* Styling for homepage's text */
+    #home_text {
+        font-size: 3rem;
+    }
+
+    /* Styling for blog title in all_blogs */
+    #blog_title {
+        font-size: 4rem;
+    }
+
+    /* Styling for blog title in detailed_blog*/
+    #detailed_blog_title {
+        font-size: 3rem;
+    }
+
+
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <title>Personal Portfolio</title>
+    </head>
+    <body>
+        <!-- Extending base styles -->
+        {% extends 'portfolio/base_style.html' %}
+        {% block content %}
+        {% load static %}
+        <!-- To include static files like images, pdf -->
+        <div class="row justify-content-center my-3">
+            <div class="col-5">
+                <img class="img-fluid" src="{% static 'portfolio/profile_pic.jpg' %}">
+            </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-9 text-center">
+                <h4 id="home_text">This is my portfolio</h1>
+            </div>
+        </div>
+        <h2 class="mt-5">Portfolio</h2>
+        <hr>
+        <div class="row">
+            <!-- Django templating language - for loop to iterate through projects var in views -->
+            {% for x in projects %}
+            <div class="col-lg-6 col-md-6"> 
+                <!-- if condition -->
+                {% if x.project_URL %}
+                <a href="{{ x.project_URL }}">
+                    <img src = "{{ x.project_Image.url }}" height="300px" width="500px" class="mb-2">
+                </a>
+                {% else %}
+                <img src = "{{ x.project_Image.url }}" height="300px" width="500px" class="mb-2">
+                {% endif %}
+                <h4>{{ x.project_Title }}</h4>
+                <h5>{{ x.project_Description }}</h5>
+            </div>
+            {% endfor %}
+        </div>
+        {% endblock %} 
+
+        <!-- Ending content block -->
+    </body>
+</html>

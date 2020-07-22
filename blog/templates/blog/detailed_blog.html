@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<body>
+    <!-- Extending base styles -->
+    {% extends 'portfolio/base_style.html' %}
+    {% block content %}
+    <br>
+    <h1 id="detailed_blog_title" class="text-center">{{ blog.blog_Title }}</h1>
+    <p class="text-center text-muted"><i>{{ blog.blog_Date|date:'F jS Y'}}</i></p>
+    <br>
+    <!-- safe ensures that the description follows its html formatting-->
+    <p class="justify-content-center">{{ blog.blog_Description|safe }}</p>
+    {% endblock %}
+    <!-- Ending content block -->
+</body>
+</html>
